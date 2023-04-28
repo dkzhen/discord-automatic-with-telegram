@@ -5,6 +5,9 @@ const token = process.env.TELEGRAM_BOT_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
+bot.on("polling_error", (error) => {
+  console.log(error.code); // => 'EFATAL'
+});
 
 bot.on("message", (msg) => {
   const chatId = msg.chat.id;
@@ -84,8 +87,5 @@ bot.on("message", (msg) => {
     });
 
     bot.sendMessage(chatId, "Sending message successfully");
-    bot.on("polling_error", (error) => {
-      console.log(error.code); // => 'EFATAL'
-    });
   }
 });
