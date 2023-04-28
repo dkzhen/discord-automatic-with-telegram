@@ -1,7 +1,7 @@
 const TelegramBot = require("node-telegram-bot-api");
 require("dotenv").config();
 // replace the value below with the Telegram token you receive from @BotFather
-const token = process.env.TELEGRAM_BOT_TOKEN;
+const token = "6242924573:AAGJs5zPMxm-Lo3lunEWuwy1NSD6w8Y50iM";
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
@@ -57,18 +57,19 @@ bot.on("message", (msg) => {
   const date = "\n> " + dateTime;
   const contentDiscord = conTele.concat(reply, date);
 
-  const d1 = process.env.DISCORD1;
-  const d2 = process.env.DISCORD2;
-  const d3 = process.env.DISCORD3;
-  const d4 = process.env.DISCORD4;
-  const d5 = process.env.DISCORD5;
+  const d1 =
+    "https://discord.com/api/webhooks/1101500885806358558/SkWijmmjf_YcS01vWWjN3N7K0Vj8J3n1ceo8zPMJj8QopI34NnE31FmFy7rwvwzmOVGB";
+  // const d2 = process.env.DISCORD2;
+  // const d3 = process.env.DISCORD3;
+  // const d4 = process.env.DISCORD4;
+  // const d5 = process.env.DISCORD5;
 
-  let items = [d1, d2, d3, d4, d5];
-  var item = items[Math.floor(Math.random() * items.length)];
+  // let items = [d1, d2, d3, d4, d5];
+  // var item = items[Math.floor(Math.random() * items.length)];
   var params = {
     content: contentDiscord,
   };
-  fetch(item, {
+  fetch(d1, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
