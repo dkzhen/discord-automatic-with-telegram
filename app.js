@@ -68,10 +68,6 @@ bot.on("message", (msg) => {
   var params = {
     content: contentDiscord,
   };
-
-  // const griding = "Welcome to Anoderb Bot \nPowered by Anoderb Team";
-  // bot.sendMessage(chatId, griding);
-
   fetch(item, {
     method: "POST",
     headers: {
@@ -82,7 +78,7 @@ bot.on("message", (msg) => {
     console.log(res);
   });
 
-  bot.sendMessage(chatId, "Sending message successfully");
+  bot.sendMessage(chatId, "Sending message successfull");
 });
 bot.on("polling_error", (error) => {
   console.log(error.code); // => 'EFATAL'
