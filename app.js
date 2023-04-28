@@ -1,7 +1,7 @@
 const TelegramBot = require("node-telegram-bot-api");
 require("dotenv").config();
 // replace the value below with the Telegram token you receive from @BotFather
-const token = process.env.TELEGRAM_BOT_TOKEN;
+const token = "6242924573:AAH4lNsOgIsReGPCaaacK2RoB918fIYZVfU";
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
@@ -57,11 +57,16 @@ bot.on("message", (msg) => {
   const date = "\n> " + dateTime;
   const contentDiscord = conTele.concat(reply, date);
 
-  const d1 = process.env.DISCORD1;
-  const d2 = process.env.DISCORD2 || process.env.DISCORD1;
-  const d3 = process.env.DISCORD3 || process.env.DISCORD1;
-  const d4 = process.env.DISCORD4 || process.env.DISCORD1;
-  const d5 = process.env.DISCORD5 || process.env.DISCORD1;
+  const d1 =
+    "https://discord.com/api/webhooks/1101475855638728735/rLHXwrAZBkypV2f6epEnlyGCLPCJORDWep_yw0mzasd-YLZ4wPp5yaT626wNPa1mMpAS";
+  const d2 =
+    "https://discord.com/api/webhooks/1101475855638728735/rLHXwrAZBkypV2f6epEnlyGCLPCJORDWep_yw0mzasd-YLZ4wPp5yaT626wNPa1mMpAS";
+  const d3 =
+    "https://discord.com/api/webhooks/1101475855638728735/rLHXwrAZBkypV2f6epEnlyGCLPCJORDWep_yw0mzasd-YLZ4wPp5yaT626wNPa1mMpAS";
+  const d4 =
+    "https://discord.com/api/webhooks/1101475855638728735/rLHXwrAZBkypV2f6epEnlyGCLPCJORDWep_yw0mzasd-YLZ4wPp5yaT626wNPa1mMpAS";
+  const d5 =
+    "https://discord.com/api/webhooks/1101475855638728735/rLHXwrAZBkypV2f6epEnlyGCLPCJORDWep_yw0mzasd-YLZ4wPp5yaT626wNPa1mMpAS";
 
   let items = [d1, d2, d3, d4, d5];
   var item = items[Math.floor(Math.random() * items.length)];

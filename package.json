@@ -2,10 +2,10 @@
   "name": "telegram-bot-discord",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "app": "node index.js",
-    "dev": "nodemon index.js"
+    "app": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
