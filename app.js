@@ -4,7 +4,7 @@ require("dotenv").config();
 const token = process.env.TELEGRAM_BOT_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token, { filepath: false });
 bot.on("polling_error", (error) => {
   console.log(error.code); // => 'EFATAL'
 });
