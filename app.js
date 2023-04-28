@@ -89,6 +89,3 @@ bot.on("message", (msg) => {
 bot.on("polling_error", (error) => {
   console.log(error.code); // => 'EFATAL'
 });
-bot.on("webhook_error", (error) => {
-  console.log(error.code); // => 'EPARSE'
-});
