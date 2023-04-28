@@ -58,10 +58,10 @@ bot.on("message", (msg) => {
   const contentDiscord = conTele.concat(reply, date);
 
   const d1 = process.env.DISCORD1;
-  const d2 = process.env.DISCORD2 || process.env.DISCORD1;
-  const d3 = process.env.DISCORD3 || process.env.DISCORD1;
-  const d4 = process.env.DISCORD4 || process.env.DISCORD1;
-  const d5 = process.env.DISCORD5 || process.env.DISCORD1;
+  const d2 = process.env.DISCORD2;
+  const d3 = process.env.DISCORD3;
+  const d4 = process.env.DISCORD4;
+  const d5 = process.env.DISCORD5;
 
   let items = [d1, d2, d3, d4, d5];
   var item = items[Math.floor(Math.random() * items.length)];
