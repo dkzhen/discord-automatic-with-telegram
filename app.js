@@ -84,5 +84,8 @@ bot.on("message", (msg) => {
     });
 
     bot.sendMessage(chatId, "Sending message successfully");
+    bot.on("polling_error", (error) => {
+      console.log(error.code); // => 'EFATAL'
+    });
   }
 });
