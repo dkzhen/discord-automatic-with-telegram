@@ -69,22 +69,20 @@ bot.on("message", (msg) => {
     content: contentDiscord,
   };
 
-  if (messageText == "/start") {
-    const griding = "Welcome to Anoderb Bot \nPowered by Anoderb Team";
-    bot.sendMessage(chatId, griding);
-  } else {
-    fetch(item, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(params),
-    }).then((res) => {
-      console.log(res);
-    });
+  // const griding = "Welcome to Anoderb Bot \nPowered by Anoderb Team";
+  // bot.sendMessage(chatId, griding);
 
-    bot.sendMessage(chatId, "Sending message successfully");
-  }
+  fetch(item, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(params),
+  }).then((res) => {
+    console.log(res);
+  });
+
+  bot.sendMessage(chatId, "Sending message successfully");
 });
 bot.on("polling_error", (error) => {
   console.log(error.code); // => 'EFATAL'
