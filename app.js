@@ -1,7 +1,21 @@
 const TelegramBot = require("node-telegram-bot-api");
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 require("dotenv").config();
+
+//middleware
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//endpoint
+app.get("/", (req, res) => {
+  res.send("Bot server is running....");
+});
 // replace the value below with the Telegram token you receive from @BotFather
-const token = "6107160145:AAGbkPTD_n9Sc_Y8TcV9hQFhq17scTtNl2E";
+const token = process.env.TELEGRAM_BOT_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
@@ -57,8 +71,7 @@ bot.on("message", (msg) => {
   const date = "\n> " + dateTime;
   const contentDiscord = conTele.concat(reply, date);
 
-  const d1 =
-    "https://discord.com/api/webhooks/1101500885806358558/SkWijmmjf_YcS01vWWjN3N7K0Vj8J3n1ceo8zPMJj8QopI34NnE31FmFy7rwvwzmOVGB";
+  const d1 = process.env.DISCORD1;
   // const d2 = process.env.DISCORD2;
   // const d3 = process.env.DISCORD3;
   // const d4 = process.env.DISCORD4;
@@ -69,18 +82,26 @@ bot.on("message", (msg) => {
   var params = {
     content: contentDiscord,
   };
-  fetch(d1, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(params),
-  }).then((res) => {
-    console.log(res);
-  });
+  if (messageText === "/start") {
+    bot.sendMessage(chatId, "Welcome to Anoderb Bot \nPowered by Anoderb Team");
+  } else {
+    fetch(d1, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(params),
+    }).then((res) => {
+      console.log(res);
+    });
 
-  bot.sendMessage(chatId, "Sending message successfull");
+    bot.sendMessage(chatId, "Sending message successfull");
+  }
 });
 bot.on("polling_error", (error) => {
   console.log(error.code); // => 'EFATAL'
+});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log("App started on Port 5000");
 });
