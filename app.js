@@ -4,6 +4,8 @@ const cors = require("cors");
 const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+import fetch from "node-fetch";
+globalThis.fetch = fetch;
 
 //middleware
 const app = express();
