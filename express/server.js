@@ -1,6 +1,7 @@
 const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 const cors = require("cors");
+const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -9,11 +10,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+const router = express.Router();
 //endpoint
 app.get("/", (req, res) => {
-  res.send("Bot server is running....");
+  res.json({
+    "its work now!": "Bot server is running....",
+  });
 });
+
+console.log("Test Aplication");
 // replace the value below with the Telegram token you receive from @BotFather
 const token = process.env.TELEGRAM_BOT_TOKEN;
 
@@ -85,23 +90,27 @@ bot.on("message", (msg) => {
   if (messageText === "/start") {
     bot.sendMessage(chatId, "Welcome to Anoderb Bot \nPowered by Anoderb Team");
   } else {
-    fetch(d1, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(params),
-    }).then((res) => {
-      console.log(res);
-    });
+    try {
+      fetch(d1, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(params),
+      }).then((res) => {
+        console.log(res);
+      });
 
-    bot.sendMessage(chatId, "Sending message successfull");
+      bot.sendMessage(chatId, "Sending message successfull");
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
 bot.on("polling_error", (error) => {
   console.log(error.code); // => 'EFATAL'
 });
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log("App started on Port 5000");
-});
+app.use("/.netlify/functions/server", router);
+
+module.exports = app;
+module.exports.handler = serverless(app);
