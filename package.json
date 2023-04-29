@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "build": "netlify-lambda build express",
-    "start": "./node_modules/.bin/netlify-lambda serve express",
-    "dev": "nodemon app_local.js"
+    "local": "netlify-lambda serve express",
+    "dev": "nodemon app.js",
+    "app": "node app.js"
   },
   "keywords": [],
   "author": "",

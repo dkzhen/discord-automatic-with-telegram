@@ -13,9 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const router = express.Router();
 //endpoint
 app.get("/", (req, res) => {
-  res.json({
-    "its work now!": "Bot server is running....",
-  });
+  res.send("its work now! Bot server is running....");
 });
 
 console.log("Test Aplication");
@@ -110,7 +108,7 @@ bot.on("message", (msg) => {
 bot.on("polling_error", (error) => {
   console.log(error.code); // => 'EFATAL'
 });
-app.use("/.netlify/functions/server", router);
-
-module.exports = app;
-module.exports.handler = serverless(app);
+const PORT = process.env.PORT || 9000;
+app.listen(PORT, () => {
+  console.log("App started on Port " + PORT);
+});
