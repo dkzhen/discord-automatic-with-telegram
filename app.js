@@ -1,4 +1,4 @@
-import fetch from "cross-fetch";
+const fetch = require("cross-fetch");
 const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 const cors = require("cors");

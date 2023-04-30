@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "type": "module",
   "scripts": {
     "build": "netlify-lambda build express",
     "local": "netlify-lambda serve express",
     "dev": "nodemon app.js",
-    "app": "node --trace-warnings app.js"
+    "app": "node app.js"
   },
   "keywords": [],
   "author": "",
