@@ -1,12 +1,9 @@
+import fetch from "cross-fetch";
 const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 const cors = require("cors");
-const fetch = require("node-fetch");
-const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-
-globalThis.fetch = fetch;
 
 //middleware
 const app = express();
@@ -92,19 +89,25 @@ bot.on("message", (msg) => {
     bot.sendMessage(chatId, "Welcome to Anoderb Bot \nPowered by Anoderb Team");
   } else {
     try {
-      fetch(d1, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(params),
-      }).then((res) => {
-        console.log(res);
-      });
+      (async () => {
+        try {
+          await fetch(d1, {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(params),
+          }).then((res) => {
+            console.log(res);
+          });
+        } catch (err) {
+          console.error(err);
+        }
+      })();
 
       bot.sendMessage(chatId, "Sending message successfull");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 });
