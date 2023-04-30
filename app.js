@@ -1,10 +1,11 @@
 const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 const cors = require("cors");
+const fetch = require("node-fetch");
 const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-import fetch from "node-fetch";
+
 globalThis.fetch = fetch;
 
 //middleware
